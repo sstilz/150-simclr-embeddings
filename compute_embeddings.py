@@ -68,7 +68,7 @@ def main(cfg: Namespace) -> None:
             n_splits = math.ceil(embeddings.size / cfg.max_array_size)
 
             for i, embeddings_i in enumerate(np.array_split(embeddings, n_splits, axis=0)):
-                filepath = data_dir / f"embeddings_simclr_{subset}_part{i}of{n_splits}.npy"
+                filepath = data_dir / f"embeddings_simclr_{subset}_part{i + 1}of{n_splits}.npy"
                 np.save(filepath, embeddings_i, allow_pickle=False)
 
         else:
