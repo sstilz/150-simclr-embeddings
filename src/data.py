@@ -35,10 +35,10 @@ def get_data(dataset: str, data_dir: Union[str, Path]) -> Tuple[partial, list, C
             hf_prob=0.5,
             rr_prob=0.5,
             vf_prob=0.5,
-            normalize=dict(mean=0.0425, std=0.2017),
+            normalize=dict(mean=[0.0425], std=[0.2017]),
         )
 
-        test_transform = Compose([ToTensor(), Normalize(mean=0.0425, std=0.2017)])
+        test_transform = Compose([ToTensor(), Normalize(mean=[0.0425], std=[0.2017])])
 
     elif dataset == "mnist":
         dataset = partial(MNIST, root=(Path(data_dir) / "mnist"), download=True)
@@ -54,7 +54,7 @@ def get_data(dataset: str, data_dir: Union[str, Path]) -> Tuple[partial, list, C
             normalize=dict(mean=0.1307, std=0.3081),
         )
 
-        test_transform = Compose([ToTensor(), Normalize(mean=0.1307, std=0.3081)])
+        test_transform = Compose([ToTensor(), Normalize(mean=[0.1307], std=[0.3081])])
 
     else:
         raise NotImplementedError
