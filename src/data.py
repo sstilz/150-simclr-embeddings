@@ -51,7 +51,7 @@ def get_data(dataset: str, data_dir: Union[str, Path]) -> Tuple[partial, list, C
             hf_prob=0,
             rr_prob=0,
             vf_prob=0,
-            normalize=dict(mean=0.1307, std=0.3081),
+            normalize=dict(mean=[0.1307], std=[0.3081]),
         )
 
         test_transform = Compose([ToTensor(), Normalize(mean=[0.1307], std=[0.3081])])
